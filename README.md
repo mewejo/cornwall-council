@@ -21,4 +21,13 @@ Output is returned as JSON.
 }
 ```
 
+## Examples
 
+I am using this with Waybar to show the recyling date in my system tray. For example:
+
+```json
+"custom/recycling": {
+  "exec": "~/cornwall-council/tools/refuse-collection.sh 000000000000 | jq -r '.recycling_date' | awk '{print \"♻ \" $1 \" \" $2}'",
+  "interval": 86400
+},
+```
