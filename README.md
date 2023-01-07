@@ -12,7 +12,7 @@ To find your UPRN, visit the [Cornwall Council website](https://www.cornwall.gov
 Output is returned as JSON.
 
 ```bash
-./refuse-collection.sh <property-reference-number>
+./tools/refuse-collection.sh <property-reference-number>
 ```
 
 ```json
