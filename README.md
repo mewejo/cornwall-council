@@ -12,7 +12,7 @@ To find your UPRN, visit the [Cornwall Council website](https://www.cornwall.gov
 Output is returned as JSON.
 
 ```bash
-./tools/refuse-collection.sh <property-reference-number>
+./tools/refuse-collection <property-reference-number>
 ```
 
 ```json
@@ -27,7 +27,7 @@ I am using this with Waybar to show the recyling date in my system tray. For exa
 
 ```json
 "custom/recycling": {
-  "exec": "~/cornwall-council/tools/refuse-collection.sh 000000000000 | jq -r '.recycling_date' | awk '{print \"♻ \" $1 \" \" $2}'",
+  "exec": "~/cornwall-council/tools/refuse-collection 000000000000 | jq -r '.recycling_date' | awk '{print \"♻ \" $1 \" \" $2}'",
   "interval": 86400
 },
 ```
