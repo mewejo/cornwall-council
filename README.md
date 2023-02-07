@@ -16,9 +16,7 @@ Output is returned as JSON.
 ```
 
 ```json
-{
-  "recycling_date": "13 Jan"
-}
+{"recycling":{"next_collection":{"date_raw":"10 Feb"}}}
 ```
 
 ## Examples
