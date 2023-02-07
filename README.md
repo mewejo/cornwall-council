@@ -5,7 +5,7 @@ To find your UPRN, visit the [Cornwall Council website](https://www.cornwall.gov
 
 ## Requirements
 
-* jq
+* php
 
 ## Refuse collections
 
