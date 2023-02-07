@@ -27,7 +27,7 @@ I am using this with Waybar to show the recyling date in my system tray. For exa
 
 ```json
 "custom/recycling": {
-  "exec": "~/cornwall-council/tools/refuse-collection 000000000000 | jq -r '.recycling_date' | awk '{print \"♻ \" $1 \" \" $2}'",
+  "exec": "~/cornwall-council/tools/refuse-collection 000000000000 | jq -r '.recycling.next_collection.date_raw' | awk '{print \"♻ \" $1 \" \" $2}'",
   "interval": 86400
 },
 ```

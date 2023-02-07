@@ -1,13 +1,18 @@
-#!/bin/bash
-recycling_pattern="([0-9]{1,2} [A-Z][a-z]{2})"
-url="https://www.cornwall.gov.uk/umbraco/Surface/Waste/MyCollectionDays?uprn={$1}&subscribe=False"
+#!/usr/bin/php
+<?php
 
-response=$(curl --silent $url)
+$propertyId = $argv[1];
 
-if [[ $response =~ $recycling_pattern ]]
-then
-    recycling_date="${BASH_REMATCH[1]}"
-fi
+$response = file_get_contents("https://www.cornwall.gov.uk/umbraco/Surface/Waste/MyCollectionDays?uprn={$propertyId}&subscribe=False");
 
-echo "{\"recycling_date\": \"$recycling_date\"}" | jq
+preg_match("/Recycling(\S+\W+){2}span>(\d{2}) (\w{3})/", $response, $matches);
+
+echo json_encode([
+    "recycling" => [
+	    "next_collection" => [
+	        "date_raw" => sprintf("%s %s", $matches[2] ?? '', $matches[3] ?? ''),
+	    ],
+    ],    
+]);
+
 
