@@ -1,0 +1,18 @@
+#!/usr/bin/php
+<?php
+
+$propertyId = $argv[1];
+
+$response = file_get_contents("https://www.cornwall.gov.uk/umbraco/Surface/Waste/MyCollectionDays?uprn={$propertyId}&subscribe=False");
+
+preg_match("/Recycling(\S+\W+){2}span>(\d{2}) (\w{3})/", $response, $matches);
+
+echo json_encode([
+    "recycling" => [
+	    "next_collection" => [
+	        "date_raw" => sprintf("%s %s", $matches[2] ?? '', $matches[3] ?? ''),
+	    ],
+    ],    
+]);
+
+
